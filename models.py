@@ -2,7 +2,7 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_login import UserMixin
 from werkzeug.security import generate_password_hash, check_password_hash
 from datetime import datetime
-from sqlalchemy import BigInteger
+from sqlalchemy import BigInteger, Boolean
 
 db = SQLAlchemy()
 
@@ -68,6 +68,12 @@ class Applicant(db.Model):
         nullable=False
     )
 
+    done = db.Column(
+        db.Boolean, 
+        default=False,
+        nullable=False
+    )
+
     created_at = db.Column(
         db.DateTime,
         default=datetime.utcnow
@@ -78,7 +84,8 @@ class Applicant(db.Model):
             "id": self.id,
             "username": self.username,
             "bank_account_number": self.bank_account_number,
-            "score": self.score
+            "score": self.score,
+            "done": self.done
         }
 
 

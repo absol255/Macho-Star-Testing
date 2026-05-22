@@ -220,6 +220,7 @@ def testing_finished():
     db.session.add(applicant)
     db.session.flush()
     applicant.score = score
+    applicant.done = True
     db.session.commit()
     return jsonify(applicant.to_dict())
 

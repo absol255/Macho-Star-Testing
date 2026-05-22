@@ -82,4 +82,14 @@ async function login() {
     }
 }
 
+async function logout() {
+    const res = await fetch("/api/testing/logout", {
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify({
+        })
+    });
+    return
+}
+
 checkLogin();

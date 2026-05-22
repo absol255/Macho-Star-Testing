@@ -1,4 +1,4 @@
-(function () {
+document.addEventListener("DOMContentLoaded", function () {
     const setScoreUsername = document.getElementById("set-score-username");
     const newSetScore = document.getElementById("new-set-score");
     const setScoreButton = document.getElementById("set-score-button");

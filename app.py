@@ -227,3 +227,18 @@ def testing_finished():
     db.session.commit()
     return redirect("/")
 
+@app.route("/api/admin/setscore", methods=["POST"])
+@login_required
+def admin_setscore():
+    data = request.json
+
+    username = data.get("username")
+    score = int(data.get("score"), 0)
+
+    applicant = Applicant.query.filter_by(username=username).first()
+    if not applicant:
+        return jsonify({"error": "Invalid username"}), 400
+
+    applicant.score = score
+    db.session.commit()
+    return jsonify(applicant.to_dict()), 200

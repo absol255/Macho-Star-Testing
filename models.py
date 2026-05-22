@@ -57,7 +57,7 @@ class Applicant(db.Model):
     )
 
     bank_account_number = db.Column(
-        db.BigInteger(64),
+        db.BigInteger,
         unique=True,
         nullable=False
     )

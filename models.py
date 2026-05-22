@@ -73,6 +73,13 @@ class Applicant(db.Model):
         default=datetime.utcnow
     )
 
+    def to_dict(self):
+        return {
+            "id": self.id,
+            "username": self.username,
+            "bank_account_number": self.bank_account_number,
+            "score": self.score
+        }
 
 
 # -----------------------

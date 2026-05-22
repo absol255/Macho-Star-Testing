@@ -235,10 +235,15 @@ def admin_setscore():
     username = data.get("username")
     score = int(data.get("score"), 0)
 
+    user = User.query.filter_by(username=username).first()
+    if not user:
+        return jsonify({"error": "Invalid username"}), 401
     applicant = Applicant.query.filter_by(username=username).first()
     if not applicant:
-        return jsonify({"error": "Invalid username"}), 400
-
+        applicant = Applicant(username=username, bank_account_number=user.bank_account_number, score=0, done=False)
+        db.session.add(applicant)
+        db.session.flush()
+        
     applicant.score = score
     db.session.commit()
     return jsonify(applicant.to_dict()), 200

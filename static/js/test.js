@@ -46,3 +46,40 @@ form.addEventListener("submit", (e) => {
     }
 
 });
+
+async function checkLogin() {
+    const res = await fetch("/api/testing/me");
+
+    if (res.ok) {
+        // logged in
+        document.getElementById("loginBox").style.display = "none";
+        document.getElementById("testContent").style.display = "block";
+    } else {
+        // not logged in
+        document.getElementById("loginBox").style.display = "block";
+        document.getElementById("testContent").style.display = "none";
+    }
+}
+
+async function login() {
+    const username = document.getElementById("username").value;
+    const bank = document.getElementById("bank").value;
+
+    const res = await fetch("/api/testing/session", {
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify({
+            username,
+            bank_account_number: bank
+        })
+    });
+
+    if (res.ok) {
+        checkLogin(); // instantly switch UI
+    } else {
+        const data = await res.json();
+        alert(data.error);
+    }
+}
+
+checkLogin();

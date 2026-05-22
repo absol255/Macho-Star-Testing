@@ -94,6 +94,17 @@ def login():
 def test():
     return render_template("test.html")
 
+@app.route("/api/testing/me")
+def me():
+    user = get_tester()
+    if not user:
+        return jsonify({"logged_in": False}), 401
+
+    return jsonify({
+        "logged_in": True,
+        "username": user.username
+    })
+
 @app.route("/api/testing/session", methods=["POST"])
 def testing_session():
     data = request.get_json(silent=True) or {}

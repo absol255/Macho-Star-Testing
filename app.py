@@ -152,7 +152,7 @@ def testing_finished():
     applicant = Applicant.query.filter_by(username=user.username, bank_account_number=user.bank_account_number).first()
     if applicant:
         if applicant.done:
-            return redirect("/"), 403
+            return redirect("/")
     if not applicant:
         applicant = Applicant(username=user.username, bank_account_number=user.bank_account_number)
     data = request.form

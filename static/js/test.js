@@ -89,6 +89,7 @@ async function logout() {
         body: JSON.stringify({
         })
     });
+    window.location.href = "/test"
     return
 }
 

@@ -1,5 +1,5 @@
 (function () {
-    const setScoreUsername = document.getElementById("set-stock-username");
+    const setScoreUsername = document.getElementById("set-score-username");
     const newSetScore = document.getElementById("new-set-score");
     const setScoreButton = document.getElementById("set-score-button");
     const adminMsg = document.getElementById("admin-msg");

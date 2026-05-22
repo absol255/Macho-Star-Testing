@@ -150,6 +150,8 @@ def testing_finished():
         return jsonify({"error": "Not signed in"}), 401
 
     applicant = Applicant.query.filter_by(username=user.username, bank_account_number=user.bank_account_number).first()
+    if applicant.done:
+        return redirect("/"), 403
     if not applicant:
         applicant = Applicant(username=user.username, bank_account_number=user.bank_account_number)
     data = request.form
@@ -222,5 +224,5 @@ def testing_finished():
     applicant.score = score
     applicant.done = True
     db.session.commit()
-    return jsonify(applicant.to_dict())
+    return redirect("/")
 

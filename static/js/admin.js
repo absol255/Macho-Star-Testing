@@ -11,8 +11,8 @@
     setScoreButton.addEventListener('click', function() {
         const username = String(setScoreUsername.value)
         const score = parseInt(newSetScore.value, 10);
-        if (!stockId) return;
         if (!username) return;
+        if (!score) return;
 
         fetch("/api/admin/setscore", {
             method: "POST",

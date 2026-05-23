@@ -247,3 +247,9 @@ def admin_setscore():
     applicant.score = score
     db.session.commit()
     return jsonify(applicant.to_dict()), 200
+
+@app.route("/api/admin/applicants")
+@login_required
+def admin_applicants():
+    applicants = Applicant.query.all()
+    return jsonify([a.to_dict() for a in applicants])

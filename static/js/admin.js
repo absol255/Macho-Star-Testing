@@ -20,16 +20,13 @@
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({username: username, score: score || 0 }),
         })
-            .then(function (r) { return r.json().then(function (d) { return { ok: r.ok, d: d }; }); })
+            .then(async function (r) { return r.json().then(function (d) { return { ok: r.ok, d: d }; }); })
             .then(function (res) {
                 if (!res.ok) {
                     message(res.d.error || "Could not set score");
                     return;
                 }
-                newName.value = "";
-                newValue.value = "";
                 message("Set scores.");
-                load();
             });
     });
 })();

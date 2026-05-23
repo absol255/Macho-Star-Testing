@@ -3,6 +3,7 @@
     const newSetScore = document.getElementById("newsetscore");
     const setScoreButton = document.getElementById("setscorebutton");
     const adminMsg = document.getElementById("adminmsg");
+    const listEl = document.getElementById("list");
 
     function message(text) {
         adminMsg.textContent = text;

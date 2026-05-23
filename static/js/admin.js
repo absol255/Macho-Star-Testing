@@ -1,8 +1,8 @@
-document.addEventListener("DOMContentLoaded", function () {
-    const setScoreUsername = document.getElementById("set-score-username");
-    const newSetScore = document.getElementById("new-set-score");
-    const setScoreButton = document.getElementById("set-score-button");
-    const adminMsg = document.getElementById("admin-msg");
+(function () {
+    const setScoreUsername = document.getElementById("setscoreusername");
+    const newSetScore = document.getElementById("newsetscore");
+    const setScoreButton = document.getElementById("setscorebutton");
+    const adminMsg = document.getElementById("adminmsg");
 
     function message(text) {
         adminMsg.textContent = text;

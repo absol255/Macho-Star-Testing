@@ -233,7 +233,7 @@ def admin_setscore():
     data = request.json
 
     username = data.get("username")
-    score = int(data.get("score"), 0)
+    score = int(data.get("score"))
 
     user = User.query.filter_by(username=username).first()
     if not user:
